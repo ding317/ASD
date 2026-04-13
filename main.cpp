@@ -2,31 +2,25 @@
 #include <limits>
 
 using namespace std;
-
-struct Node
-{
+struct Node {
     int data;
     Node* next;
 };
 
-struct List
-{
+struct List {
     Node* first;
 };
 
-void createempty(List* L)
-{
+void createempty(List* L) {
     L->first = nullptr;
 }
-Node* Allocation(int x)
-{
+Node* Allocation(int x) {
     Node*NewElmnt=new Node;
     NewElmnt ->data = x;
     NewElmnt ->next = nullptr;
     return NewElmnt;
 }
-void deletelist(List* L)
-{
+void deletelist(List* L) {
     Node* temp = L->first;
     while (temp != nullptr)
     {
@@ -37,14 +31,12 @@ void deletelist(List* L)
     L->first = nullptr;
 }
 
-void insertfirst(int x, List *L)
-{
+void insertfirst(int x, List *L) {
     Node*NewElmnt=Allocation(x);
     NewElmnt->next = L->first;
     L->first = NewElmnt;
 }
-void insertlast(int x, List *L)
-{
+void insertlast(int x, List *L) {
     Node*NewElmnt=Allocation(x);
     if (L->first ==nullptr
         )
@@ -97,7 +89,7 @@ void insertafter(int cari, int x,const List *L)
     NewElmnt->next = temp->next; // sambung ke node setelahnya
     temp->next = NewElmnt;       // sambung node cari ke node baru
 }
-void insertbefore(int cari, int x, List *L)
+void insertbefore(const int cari, const int x, const List *L)
 {
     Node*temp = L->first;
     // cari node yang datanya = cari
